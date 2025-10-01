@@ -1,0 +1,18 @@
+# Project Intelligence (.cursorrules)
+
+Patterns & Preferences
+
+- Keep endpoints tiny; push logic into `services`.
+- Prefer idempotent writes and traceable logs.
+- SQLite for demo; switch via `DATABASE_URL` when needed.
+- Use `PYTHONPATH=$(pwd)` for running scripts/tests locally.
+- OpenAI responses may include markdown fences; strip before parsing JSON.
+- Service names must be normalized to match DB conventions (e.g., "AC Repair" not "ac repair").
+
+Interview Notes
+
+- Narrate flow: POST /lead → classify → pick_slot → book → confirm.
+- Chat flow: /chat/inbound (extract entities, propose) → /chat/reply (classify, book/reschedule).
+- Emphasize idempotency and logs for debugging.
+- Tenant resolved by phone lookup first, NLU extraction as fallback.
+- LLM used for: entity extraction, proposal generation, reply classification.
